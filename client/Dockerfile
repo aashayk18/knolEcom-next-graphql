@@ -1,6 +1,6 @@
 FROM node:latest as build
 
-WORKDIR /app/server
+WORKDIR /app/client
 
 COPY package*.json ./
 
@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 4000
+RUN npm run build
 
-CMD ["nodemon", "server.js"]
+EXPOSE 3000
+
+CMD ["npm", "start"]
